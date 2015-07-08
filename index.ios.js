@@ -10,6 +10,7 @@ var {
   StyleSheet,
   Text,
   View,
+  NavigatorIOS
 } = React;
 
 var Main = require('./Main');
@@ -17,7 +18,13 @@ var Main = require('./Main');
 var GemFinder = React.createClass({
   render: function() {
     return (
-      <Main />
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Gems Finder',
+          component: Main,
+        }}/>
+
     );
   }
 });
@@ -25,19 +32,6 @@ var GemFinder = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 

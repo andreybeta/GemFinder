@@ -59,7 +59,7 @@ class MostRecent extends Component{
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 60,
     padding: 20,
     backgroundColor: '#F5FCFF',
   },
