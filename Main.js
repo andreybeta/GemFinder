@@ -19,7 +19,7 @@ var Main = React.createClass({
 
   getInitialState: function() {
     return {
-      selectedTab: 'search',
+      selectedTab: 'most-recent',
       notifCount: 0,
       presses: 0,
     };
@@ -49,7 +49,7 @@ var Main = React.createClass({
           }}>
           <MostRecent />
         </TabBarIOS.Item>
-        
+
         <TabBarIOS.Item
           title="Search"
           systemIcon="search"

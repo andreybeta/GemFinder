@@ -28,25 +28,27 @@ class SearchResults extends Component{
   }
 
   renderRow(row){
-    var info = row.info ? row.info.substring(1, 100) + '...': ''
-    return (
-      <TouchableHighlight  underlayColor='#D33' style={styles.row}>
-        <View>
-          <Text style={styles.rowTitle}>{row.name}</Text>
-          <Text style={styles.rowInfo}>{info}</Text>
-          <Text style={styles.rowDownloads}>{row.downloads} downloads</Text>
-        </View>
-      </TouchableHighlight>
-    );
+    if(row.name){
+      var info = row.info.length>100 ? row.info.substring(1, 100) + '...': row.info;
+      return (
+        <TouchableHighlight  underlayColor='#e9573f' style={styles.row}>
+          <View>
+            <Text style={styles.rowTitle}>{row.name}</Text>
+            <Text style={styles.rowInfo}>{info}</Text>
+            <Text style={styles.rowDownloads}>{row.downloads} downloads</Text>
+          </View>
+        </TouchableHighlight>
+      );
+    }else{
+      return <View/>
+    }
   }
 
   render(){
     //console.log('results', this.state.results);
   	return(
-	  	<View >
-	  		<Text>Results</Text>
-        <ListView style={{ borderWidth: 1, marginBottom: 60}}
-
+	  	<View style={{flex: 1}}>
+        <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)} />
 	  	</View>
@@ -57,7 +59,7 @@ class SearchResults extends Component{
     console.log('set results', results);
 
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(results || ['sin datos'])
+      dataSource: this.state.dataSource.cloneWithRows(results)
     });
   }
 }
@@ -65,14 +67,13 @@ class SearchResults extends Component{
 
 var styles = StyleSheet.create({
   container:{
-    flex: 1,
-    justifyContent: 'flex-start'
+
   },
   row:{
     borderBottomWidth: 1,
     borderBottomColor: '#DDD',
     padding: 5,
-
+    borderRadius: 4
   },
   rowTitle:{
     fontSize: 16,
@@ -83,7 +84,6 @@ var styles = StyleSheet.create({
     textAlign: 'left',
     alignSelf: 'flex-end'
   }
-
 
 });
 

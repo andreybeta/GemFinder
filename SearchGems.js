@@ -94,7 +94,7 @@ var styles = StyleSheet.create({
 
   searchButton: {
     height: 36,
-    backgroundColor: '#D66',
+    backgroundColor: '#e9573f',
     flexDirection: 'row',
     alignSelf: 'stretch',
     justifyContent: 'center',
@@ -110,6 +110,7 @@ var styles = StyleSheet.create({
 
   results:{
     borderWidth: 1,
+    flex: 1,
   }
 });
 
