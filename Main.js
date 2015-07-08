@@ -39,7 +39,7 @@ var Main = React.createClass({
       <TabBarIOS
         >
         <TabBarIOS.Item
-          title="Blue Tab"
+          title="Recents"
           systemIcon="most-recent"
           selected={this.state.selectedTab === 'most-recent'}
           onPress={() => {
@@ -51,7 +51,7 @@ var Main = React.createClass({
         </TabBarIOS.Item>
         
         <TabBarIOS.Item
-          title="Blue Tab"
+          title="Search"
           systemIcon="search"
           selected={this.state.selectedTab === 'search'}
           onPress={() => {
