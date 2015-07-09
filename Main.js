@@ -10,6 +10,7 @@ var {
 
 var MostRecent = require('./MostRecent');
 var SearchGems = require('./SearchGems');
+var GemInfo = require('./GemInfo');
 
 var Main = React.createClass({
   statics: {
@@ -47,7 +48,7 @@ var Main = React.createClass({
               selectedTab: 'most-recent',
             });
           }}>
-          <MostRecent />
+          <MostRecent navigator = {this.props.navigator}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -59,7 +60,7 @@ var Main = React.createClass({
               selectedTab: 'search',
             });
           }}>
-          <SearchGems />
+          <SearchGems navigator = {this.props.navigator}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -74,6 +75,7 @@ var Main = React.createClass({
           }}>
           {this._renderContent('#783E33', 'Red Tab')}
         </TabBarIOS.Item>
+
         <TabBarIOS.Item
           systemIcon="more"
           selected={this.state.selectedTab === 'more'}

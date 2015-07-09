@@ -5,11 +5,8 @@ var {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  TouchableHighlight,
   Component,
   ActivityIndicatorIOS
-
 } = React;
 
 var SearchResults = require('./SearchResults');
@@ -20,8 +17,10 @@ class MostRecent extends Component{
     super(props);
     this.state = {showProgress : true};
   }
+
   componentDidMount(){
     this.fetchLatest();
+    console.log('navigator', this.props.navigator);
   }
 
   render(){
@@ -33,7 +32,8 @@ class MostRecent extends Component{
           animating={this.state.showProgress}
           color={'#808080'}
           size={'small'} />
-        <SearchResults style={styles.results}  ref='results' />
+
+        <SearchResults style={styles.results}  ref='results' navigator={this.props.navigator} />
       </View>
     );
   }
@@ -53,7 +53,6 @@ class MostRecent extends Component{
         this.refs.results.setResults(results);
       })
   }
-
 }
 
 var styles = StyleSheet.create({

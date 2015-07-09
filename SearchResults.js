@@ -10,6 +10,8 @@ var {
   TouchableHighlight
 } = React;
 
+var GemInfo = require('./GemInfo');
+
 class SearchResults extends Component{
   constructor(props){
     super(props);
@@ -31,7 +33,10 @@ class SearchResults extends Component{
     if(row.name){
       var info = row.info.length>100 ? row.info.substring(1, 100) + '...': row.info;
       return (
-        <TouchableHighlight  underlayColor='#e9573f' style={styles.row}>
+        <TouchableHighlight
+          underlayColor='#e9573f'
+          style={styles.row}
+          onPress = {()=>this.onItemPressed(row.name)}>
           <View>
             <Text style={styles.rowTitle}>{row.name}</Text>
             <Text style={styles.rowInfo}>{info}</Text>
@@ -53,6 +58,14 @@ class SearchResults extends Component{
           renderRow={this.renderRow.bind(this)} />
 	  	</View>
   	);
+  }
+
+  onItemPressed(gemName){
+    this.props.navigator.push({
+      title: gemName,
+      component: GemInfo
+    });
+    console.log(gemName);
   }
 
   setResults(results){

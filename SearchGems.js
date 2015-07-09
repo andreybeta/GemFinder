@@ -19,29 +19,30 @@ class SearchGems extends Component{
   constructor(props){
     super(props);
     this.state = {showProgress : false};
-
   }
 
   render(){
-
   	return(
 	  	<View style={styles.container} >
         <View style={styles.groupContainer}>
   	  		<TextInput style = {styles.searchInput} placeholder='Search gems..'
-            onChangeText={ (text)=>this.setState({term: text}) }
-          ></TextInput>
-  	  		<TouchableHighlight
+            onChangeText={ (text)=>this.setState({term: text}) }>
+          </TextInput>
+
+          <TouchableHighlight
             style={styles.searchButton}
             onPress = {this.onSearchPressed.bind(this)}
             >
   	  			<Text style={styles.buttonLabel}>Search</Text>
   	  		</TouchableHighlight>
         </View>
+
         <ActivityIndicatorIOS
           animating={this.state.showProgress}
           color={'#808080'}
           size={'small'} />
-        <SearchResults style={styles.results}  ref='results' results={this.state.results}/>
+
+        <SearchResults style={styles.results}  ref='results' navigator={this.props.navigator}/>
       </View>
   	);
   }
@@ -60,8 +61,6 @@ class SearchGems extends Component{
         });
 
         this.refs.results.setResults(results);
-
-
       })
   }
 
