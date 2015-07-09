@@ -7,7 +7,8 @@ var {
   View,
   ListView,
   Component,
-  TouchableHighlight
+  TouchableHighlight,
+  Image,
 } = React;
 
 var GemInfo = require('./GemInfo');
@@ -37,10 +38,13 @@ class SearchResults extends Component{
           underlayColor='#e9573f'
           style={styles.row}
           onPress = {()=>this.onItemPressed(row)}>
-          <View>
-            <Text style={styles.rowTitle}>{row.name}</Text>
-            <Text style={styles.rowInfo}>{info}</Text>
-            <Text style={styles.rowDownloads}>{row.downloads} downloads</Text>
+          <View style={styles.rowWrap}>
+            <Image style={styles.rowImage} source={{uri: 'https://rubygems.org/favicon.ico'}}/>
+            <View style={styles.rowInfo}>
+              <Text style={styles.rowTitle}>{row.name}</Text>
+              <Text style={styles.rowInfo}>{info}</Text>
+              <Text style={styles.rowDownloads}>{row.downloads} downloads</Text>
+            </View>
           </View>
         </TouchableHighlight>
       );
@@ -89,14 +93,26 @@ var styles = StyleSheet.create({
     padding: 5,
     borderRadius: 4
   },
+  rowWrap:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'stretch'
+  },
+  rowInfo:{
+    flex: 4,
+  },
   rowTitle:{
     fontSize: 16,
-    fontWeight: 'bold'
-
+    fontWeight: 'bold',
   },
   rowDownloads:{
     textAlign: 'left',
     alignSelf: 'flex-end'
+  },
+  rowImage:{
+    width: 32,
+    height: 32,
+    marginRight: 10,
   }
 
 });

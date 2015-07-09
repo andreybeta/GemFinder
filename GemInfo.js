@@ -10,12 +10,14 @@ var {
   TextInput,
   TouchableHighlight,
   Component,
-  ActivityIndicatorIOS
+  ActivityIndicatorIOS,
+  Image
 
 } = React;
 
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
+
 Parse.initialize(Config.ParseKey, Config.ParseAppKey);
 
 class GemInfo extends Component{
@@ -32,8 +34,11 @@ class GemInfo extends Component{
   render(){
   	return(
 	  	<View style={styles.container} >
-        <Text>{this.state.gemInfo.name}</Text>
-  	  	<Text>{this.state.gemInfo.info}</Text>
+        <Image style={styles.image} source={require('image!ruby3')}/>
+        <Text style={styles.title}>{this.state.gemInfo.name}</Text>
+        <Text style={styles.description}>{this.state.gemInfo.info}</Text>
+        <Text style={styles.downloads}>{this.state.gemInfo.downloads} downloads</Text>
+
 
         <ActivityIndicatorIOS
           animating={this.state.showProgress}
@@ -89,6 +94,21 @@ var styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   },
+  title:{
+    fontSize: 18,
+    color: '#e9573f',
+    fontWeight: '600'
+  },
+  image:{
+    width: 80,
+    height: 80,
+    alignSelf: 'center'
+  },
+  downloads:{
+    textAlign: 'left',
+    alignSelf: 'flex-end',
+    fontWeight: '600'
+  }
 });
 
 module.exports = GemInfo;

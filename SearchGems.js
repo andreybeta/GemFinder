@@ -70,7 +70,7 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 60,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#F5FCFF',
   },
 

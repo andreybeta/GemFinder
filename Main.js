@@ -101,7 +101,7 @@ var styles = StyleSheet.create({
   },
   tabText: {
     color: 'white',
-    margin: 50,
+    margin: 10,
   },
   label: {
     color: '#CCC',
