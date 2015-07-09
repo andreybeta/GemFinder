@@ -10,6 +10,7 @@ var {
 
 var MostRecent = require('./MostRecent');
 var SearchGems = require('./SearchGems');
+var Favorites = require('./Favorites');
 var GemInfo = require('./GemInfo');
 
 var Main = React.createClass({
@@ -68,12 +69,13 @@ var Main = React.createClass({
           badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
           selected={this.state.selectedTab === 'favorites'}
           onPress={() => {
+            //this.refs.favorites.fetchFavorites();
             this.setState({
               selectedTab: 'favorites',
               notifCount: this.state.notifCount + 1,
             });
           }}>
-          {this._renderContent('#783E33', 'Red Tab')}
+          <Favorites ref='favorites' navigator = {this.props.navigator} />
         </TabBarIOS.Item>
 
         <TabBarIOS.Item

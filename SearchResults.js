@@ -36,7 +36,7 @@ class SearchResults extends Component{
         <TouchableHighlight
           underlayColor='#e9573f'
           style={styles.row}
-          onPress = {()=>this.onItemPressed(row.name)}>
+          onPress = {()=>this.onItemPressed(row)}>
           <View>
             <Text style={styles.rowTitle}>{row.name}</Text>
             <Text style={styles.rowInfo}>{info}</Text>
@@ -60,16 +60,17 @@ class SearchResults extends Component{
   	);
   }
 
-  onItemPressed(gemName){
+  onItemPressed(gemInfo){
     this.props.navigator.push({
-      title: gemName,
-      component: GemInfo
+      title: gemInfo.name,
+      component: GemInfo,
+      passProps: { gemInfo: gemInfo },
     });
-    console.log(gemName);
+    //console.log(gemInfo);
   }
 
   setResults(results){
-    console.log('set results', results);
+    //console.log('set results', results);
 
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(results)
